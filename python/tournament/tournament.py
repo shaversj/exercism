@@ -39,10 +39,10 @@ def tally(tournament_results):
                 team_results.append(first_team)
                 team_results.append(second_team)
 
-        new = sorted(team_results, key=attrgetter("Name"))
+        sorted_team_results = sorted(team_results, key=attrgetter("Name"))
 
         dic = {}
-        for key, group in groupby(new, key=lambda x: x.Name):
+        for key, group in groupby(sorted_team_results, key=lambda x: x.Name):
             for x in group:
                 if key not in dic:
                     dic[key] = {"MP": x.MP, "W": x.W, "D": x.D, "L": x.L, "P": x.P}
