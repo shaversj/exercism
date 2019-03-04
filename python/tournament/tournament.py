@@ -72,12 +72,3 @@ def tally(tournament_results):
 
 def title_str():
     print(repr("Team                           | MP |  W |  D |  L |  P"))
-
-
-results = (
-    "Allegoric Alaskans;Blithering Badgers;win\n"
-    "Blithering Badgers;Courageous Californians;win\n"
-    "Courageous Californians;Allegoric Alaskans;loss"
-)
-
-print(tally(results))
