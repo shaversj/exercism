@@ -1,6 +1,4 @@
 import json
-from operator import itemgetter
-from collections import OrderedDict
 
 
 class RestAPI(object):
@@ -51,7 +49,7 @@ class RestAPI(object):
                     value["balance"] += amount
                     if value["owes"][borrower] == 0:
                         del value["owes"][borrower]
-                    if value["owes"][borrower] < 0:
+                    elif value["owes"][borrower] < 0:
                         owed_balance = abs(value["owes"][borrower])
                         value["owed_by"] = {borrower: owed_balance}
                         del value["owes"][borrower]
@@ -66,29 +64,15 @@ class RestAPI(object):
                     value["balance"] -= amount
                     if value["owed_by"][lender] == 0:
                         del value["owed_by"][lender]
-                    if value["owed_by"][lender] < 0:
+                    elif value["owed_by"][lender] < 0:
                         new_amount = abs(value["owed_by"][lender])
                         new_entry = {lender: new_amount}
                         value["owes"].update(new_entry)
                         del value["owed_by"][lender]
-
                 else:
                     new_entry = {lender: amount}
                     value["owes"].update(new_entry)
                     value["balance"] -= amount
-
-    def apply_iou_to_database(self, lender, borrower, amount):
-
-        # TODO: Need to apply logic that removes borrower once the owed amount equals 0.
-
-        d = next(t for k, v in self.database.items() for t in v if t["name"] == lender)
-        d["owed_by"] = {borrower: amount}
-        d["balance"] += int(amount)
-
-        e = next(t for k, v in self.database.items() for t in v if t["name"] == borrower)
-        new_entry = {lender: amount}
-        e["owes"].update(new_entry)
-        e["balance"] -= int(amount)
 
     def build_get_response(self, users):
 
