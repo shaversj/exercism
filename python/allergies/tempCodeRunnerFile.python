@@ -1,0 +1,24 @@
+
+food = {
+    'eggs': 1,
+    'peanuts': 2,
+    'shellfish': 4,
+    'strawberries': 8,
+    'tomatoes': 16,
+    'chocolate': 32,
+    'pollen': 64,
+    'cats': 128
+}
+
+allegeric = []
+x = 34
+
+#print(34 % 32)
+# Find the largest number that can be divided by x. Append the food to allegeric. Call the function again with the difference. Break on 0 or 1.
+
+food_score_sorted = list(reversed(sorted(food.values())))
+
+def is_allegeric():
+    for num in food_score_sorted:
+        if x % num is <= x:
+            print(num)
