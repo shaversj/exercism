@@ -1,6 +1,0 @@
-def DNA_strand_v2(dna: str):
-    key = bytes.maketrans(b'ATCG', b'TAGC')
-    
-    return dna.translate(key)
-
-print(DNA_strand_v2("AATA"))
