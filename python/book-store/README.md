@@ -31,6 +31,7 @@ For example, how much does this basket of books cost?
 - 1 copy of the fourth book
 - 1 copy of the fifth book
 
+[1, 1, 2, 2, 3, 3, 4, 5]
 One way of grouping these 8 books is:
 
 - 1 group of 5 --> 25% discount (1st,2nd,3rd,4th,5th)
